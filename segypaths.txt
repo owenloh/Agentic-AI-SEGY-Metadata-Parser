@@ -1,0 +1,8 @@
+# Add your SEGY file paths here (one per line)
+# Examples:
+# ./data/survey.sgy
+# /path/to/seismic_data.sgy
+# C:\seismic\survey_data.sgy
+
+# Uncomment and modify the line below with your actual SEGY file path:
+sample segys\KAHU-3D-PR3177-FM.3D.Final_Migration.sgy

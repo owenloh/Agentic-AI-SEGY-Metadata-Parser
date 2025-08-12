@@ -1,0 +1,1 @@
+# Data models for the AI-Powered SEGY Metadata Parser
