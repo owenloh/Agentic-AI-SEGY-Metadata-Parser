@@ -202,7 +202,7 @@ class SEGYHeaderParser:
             # Log enhanced geometric information if available
             if header_result.geometric_data:
                 geo_data = header_result.geometric_data
-                self.logger.info(f"   Corner points: {len(geo_data.corner_points)}")
+                self.logger.info(f"   Corner points: {len(geo_data.corner_points)}") if geo_data.corner_points is not None else None
                 self.logger.info(f"   Survey geometry: {'✅' if geo_data.survey_geometry else '❌'}")
                 self.logger.info(f"   Coordinate system: {'✅' if geo_data.coordinate_system else '❌'}")
                 self.logger.info(f"   Processing steps: {len(geo_data.processing_info)}")

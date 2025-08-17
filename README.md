@@ -2,16 +2,6 @@
 
 > **AI-Powered Seismic Data Intelligence** - Revolutionizing geophysical data analysis with cutting-edge artificial intelligence
 
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white)
-![AI](https://img.shields.io/badge/AI-Powered-green?style=for-the-badge&logo=openai&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-
-**90%+ Accuracy** • **15-60s Processing** • **30+ Attributes** • **Multi-Format Export**
-
-</div>
-
 ## 🎯 The Problem
 
 The global seismic data industry processes **petabytes** of SEGY files annually, but extracting critical metadata remains a **manual, error-prone process**:
@@ -30,19 +20,47 @@ The global seismic data industry processes **petabytes** of SEGY files annually,
 ### 🧠 AI-Powered Intelligence
 ```mermaid
 graph TD
-    A[SEGY File] --> B[AI Textual Header Analysis]
-    B --> C[Smart Attribute Detection]
-    C --> D[Intelligent Validation]
-    D --> E[Geometric Extraction]
-    E --> F[Multi-Format Export]
+    A[SEGY File Input] --> B[SEGYFileHandler]
+    B --> C[Extract Textual Headers]
+    C --> D[LLMHeaderParser]
     
-    B --> G[LLM Reasoning Engine]
-    G --> H[80+ Attribute Ontology]
-    H --> C
+    D --> E[LLM Analysis<br/>Gemini/Local]
+    E --> F[AttributeHypothesis<br/>Generation]
     
-    D --> I[Statistical Validation]
-    I --> J[Hypothesis Refinement]
-    J --> K[Confidence Scoring]
+    F --> G[AttributeOntology<br/>Enhancement]
+    G --> H{Enough Attributes?}
+    
+    H -->|No| I[FallbackStrategyManager]
+    I --> J[Standard SEGY Locations]
+    J --> K[Binary Header Analysis]
+    K --> L[Merge Hypotheses]
+    
+    H -->|Yes| L[Merge Hypotheses]
+    L --> M[TraceDataValidator]
+    
+    M --> N[Sample Trace Data]
+    N --> O[StatisticalAnalyzer]
+    O --> P[ValidationLLM]
+    P --> Q{Validation Passed?}
+    
+    Q -->|No| R[HypothesisRefiner]
+    R --> S[ChainOfThoughtReasoner]
+    S --> T[Generate Alternatives]
+    T --> M
+    
+    Q -->|Yes| U[GeometricExtractor]
+    U --> V[Extract Coordinates]
+    V --> W[Inline/Crossline Mapping]
+    
+    W --> X[Compile Results]
+    X --> Y[Confidence Scoring]
+    Y --> Z[ResultExporter]
+    Z --> AA[JSON/TXT/CSV Output]
+    
+    style E fill:#e1f5fe
+    style G fill:#f3e5f5
+    style O fill:#fff3e0
+    style S fill:#e8f5e8
 ```
 
 ## 🏆 Key Differentiators
@@ -197,6 +215,45 @@ python main.py parse survey.sgy --config accurate
 }
 ```
 
+## 🔍 How It Works (Detailed)
+
+The system uses a **10-step AI-powered pipeline** to extract and validate SEGY metadata:
+
+### **Step-by-Step Process**
+
+1. **📁 File Input**: SEGY file loaded using `segyio` library
+2. **📋 Header Extraction**: Textual headers extracted and decoded (ASCII/EBCDIC)
+3. **🤖 LLM Analysis**: AI analyzes headers to identify attribute-byte mappings
+4. **📚 Ontology Enhancement**: Cross-references with 80+ standard SEGY attributes
+5. **🔄 Fallback Strategies**: Applies standard locations if LLM finds insufficient attributes
+6. **🔬 Data Validation**: Samples actual trace data to verify hypotheses
+7. **📊 Statistical Analysis**: Performs statistical validation on extracted data
+8. **🧠 LLM Validation**: AI evaluates if extracted data makes logical sense
+9. **🔧 Hypothesis Refinement**: Refines failed hypotheses using chain-of-thought reasoning
+10. **📤 Export**: Generates multi-format output with confidence scores
+
+### **Key Components**
+
+| Component | Purpose | Complexity |
+|-----------|---------|------------|
+| **LLMHeaderParser** | AI-powered textual header analysis | 724 lines |
+| **LLMProvider** | Multi-LLM support with fallbacks | 838 lines |
+| **TraceDataValidator** | Validates hypotheses against real data | 400+ lines |
+| **StatisticalAnalyzer** | Statistical validation and profiling | 300+ lines |
+| **HypothesisRefiner** | Iterative improvement of failed hypotheses | 250+ lines |
+| **ChainOfThoughtReasoner** | Multi-step AI reasoning for complex cases | 200+ lines |
+| **FallbackStrategyManager** | Standard SEGY location fallbacks | 350+ lines |
+| **GeometricExtractor** | Coordinate and geometry extraction | 200+ lines |
+
+### **AI Integration Points**
+
+The system makes **multiple LLM calls** throughout the process:
+
+1. **Initial Analysis**: "Analyze this SEGY header and find attribute mappings"
+2. **Validation**: "Does this extracted data make sense for this attribute?"
+3. **Refinement**: "This hypothesis failed, suggest alternatives"
+4. **Chain-of-Thought**: "Reason through this ambiguous case step by step"
+
 ## 🏗️ Architecture
 
 ### **Modular Design**
@@ -257,6 +314,18 @@ enhanced-segy-parser/
 - **📋 Comprehensive Coverage**: 80+ standard SEGY attributes
 - **🔍 Intelligent Analysis**: Handles non-standard formats
 - **📊 Actionable Insights**: Clear, validated results
+
+## ⚠️ Complexity Notice
+
+**This codebase is highly complex** with 4000+ lines across 13+ core modules. It includes:
+
+- **Multiple LLM providers** with complex fallback mechanisms
+- **Chain-of-thought reasoning** for ambiguous cases  
+- **Statistical validation** with iterative refinement
+- **Performance optimization** and auto-tuning
+- **Comprehensive error handling** and retry logic
+
+**For simpler use cases**, consider the `simple_segy_parser.py` (300 lines) which provides core functionality without the complexity.
 
 ## 🚀 Getting Started
 

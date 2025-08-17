@@ -99,15 +99,19 @@ python print_textual_header.py
 ### **`.env` - Complete LLM Configuration**
 Create a `.env` file in the project root with your LLM settings:
 
-**Complete .env Template:**
+**Setup .env File:**
 ```bash
-# LLM Provider Configuration
+# Copy the template and configure your API key
+cp .env.template .env
+
+# Edit .env with your API key
 # Get your free API key from https://aistudio.google.com/
+```
 
-# Default LLM provider to use (gemini or local)
+**Complete .env Template:** (see `.env.template` file)
+```bash
+# LLM Provider Configuration Template
 DEFAULT_LLM_PROVIDER=gemini
-
-# Fallback providers (comma-separated)
 FALLBACK_LLM_PROVIDERS=gemini
 
 # Gemini Configuration (Recommended - Free)
@@ -116,18 +120,9 @@ GEMINI_MODEL=gemini-1.5-flash
 GEMINI_TIMEOUT=30
 GEMINI_MAX_RETRIES=1
 
-# Optional: Local LLM Configuration (OpenAI-compatible API)
-# Uncomment and configure if you have access to a local LLM using OpenAI's framework
-# DEFAULT_LLM_PROVIDER=local
-# LOCAL_LLM_SERVER_URL=your_local_llm_api_endpoint
-# LOCAL_LLM_API_KEY=your_local_api_key
+# Optional: Local LLM Configuration
+# LOCAL_LLM_SERVER_URL=http://your-server/v1/chat/completions
 # LOCAL_LLM_MODEL=your_model_name
-# LOCAL_LLM_TEMPERATURE=0.4
-# LOCAL_LLM_MAX_TOKENS=120000
-# LOCAL_LLM_TIMEOUT=30
-# LOCAL_LLM_MAX_RETRIES=3
-
-
 ```
 
 **Quick Setup for Gemini (Most Users):**
