@@ -17,52 +17,6 @@ The global seismic data industry processes **petabytes** of SEGY files annually,
 
 **AI-Powered SEGY Metadata Parser** leverages **cutting-edge AI** to automatically extract, validate, and structure seismic metadata with **90%+ accuracy** in **seconds, not hours**.
 
-### 🧠 AI-Powered Intelligence
-```mermaid
-graph TD
-    A[SEGY File Input] --> B[SEGYFileHandler]
-    B --> C[Extract Textual Headers]
-    C --> D[LLMHeaderParser]
-    
-    D --> E[LLM Analysis<br/>Gemini/Local]
-    E --> F[AttributeHypothesis<br/>Generation]
-    
-    F --> G[AttributeOntology<br/>Enhancement]
-    G --> H{Enough Attributes?}
-    
-    H -->|No| I[FallbackStrategyManager]
-    I --> J[Standard SEGY Locations]
-    J --> K[Binary Header Analysis]
-    K --> L[Merge Hypotheses]
-    
-    H -->|Yes| L[Merge Hypotheses]
-    L --> M[TraceDataValidator]
-    
-    M --> N[Sample Trace Data]
-    N --> O[StatisticalAnalyzer]
-    O --> P[ValidationLLM]
-    P --> Q{Validation Passed?}
-    
-    Q -->|No| R[HypothesisRefiner]
-    R --> S[ChainOfThoughtReasoner]
-    S --> T[Generate Alternatives]
-    T --> M
-    
-    Q -->|Yes| U[GeometricExtractor]
-    U --> V[Extract Coordinates]
-    V --> W[Inline/Crossline Mapping]
-    
-    W --> X[Compile Results]
-    X --> Y[Confidence Scoring]
-    Y --> Z[ResultExporter]
-    Z --> AA[JSON/TXT/CSV Output]
-    
-    style E fill:#e1f5fe
-    style G fill:#f3e5f5
-    style O fill:#fff3e0
-    style S fill:#e8f5e8
-```
-
 ## 🏆 Key Differentiators
 
 | Traditional Tools | AI-Powered SEGY Metadata Parser |
@@ -73,6 +27,14 @@ graph TD
 | Single format output | **Multi-format export (JSON/TXT/CSV)** |
 | Hours of analysis | **15-60 seconds processing** |
 | Domain expert required | **Accessible to any developer** |
+
+## User Experience
+![User Experience](User%20Experience.png)
+
+### 🧠 AI-Powered Intelligence
+![Flow Diagram](Simplified%20Architecture.png)
+
+
 
 ## ⚡ Performance Metrics
 
@@ -86,8 +48,8 @@ graph TD
 
 ### 1. **Setup** (30 seconds)
 ```bash
-git clone https://github.com/yourusername/ai-powered-segy-metadata-parser
-cd ai-powered-segy-metadata-parser
+git clone https://github.com/yourusername/Agentic-AI-SEGY-Metadata-Parser
+cd Agentic-AI-SEGY-Metadata-Parser
 pip install -r requirements.txt
 echo "GEMINI_API_KEY=your_api_key_here" > .env
 ```
@@ -217,6 +179,51 @@ python main.py parse survey.sgy --config accurate
 
 ## 🔍 How It Works (Detailed)
 
+```mermaid
+graph TD
+    A[SEGY File Input] --> B[SEGYFileHandler]
+    B --> C[Extract Textual Headers]
+    C --> D[LLMHeaderParser]
+    
+    D --> E[LLM Analysis<br/>Gemini/Local]
+    E --> F[AttributeHypothesis<br/>Generation]
+    
+    F --> G[AttributeOntology<br/>Enhancement]
+    G --> H{Enough Attributes?}
+    
+    H -->|No| I[FallbackStrategyManager]
+    I --> J[Standard SEGY Locations]
+    J --> K[Binary Header Analysis]
+    K --> L[Merge Hypotheses]
+    
+    H -->|Yes| L[Merge Hypotheses]
+    L --> M[TraceDataValidator]
+    
+    M --> N[Sample Trace Data]
+    N --> O[StatisticalAnalyzer]
+    O --> P[ValidationLLM]
+    P --> Q{Validation Passed?}
+    
+    Q -->|No| R[HypothesisRefiner]
+    R --> S[ChainOfThoughtReasoner]
+    S --> T[Generate Alternatives]
+    T --> M
+    
+    Q -->|Yes| U[GeometricExtractor]
+    U --> V[Extract Coordinates]
+    V --> W[Inline/Crossline Mapping]
+    
+    W --> X[Compile Results]
+    X --> Y[Confidence Scoring]
+    Y --> Z[ResultExporter]
+    Z --> AA[JSON/TXT/CSV Output]
+    
+    style E fill:#e1f5fe
+    style G fill:#f3e5f5
+    style O fill:#fff3e0
+    style S fill:#e8f5e8
+```
+
 The system uses a **10-step AI-powered pipeline** to extract and validate SEGY metadata:
 
 ### **Step-by-Step Process**
@@ -325,15 +332,13 @@ enhanced-segy-parser/
 - **Performance optimization** and auto-tuning
 - **Comprehensive error handling** and retry logic
 
-**For simpler use cases**, consider the `simple_segy_parser.py` (300 lines) which provides core functionality without the complexity.
-
 ## 🚀 Getting Started
 
 ### **For Developers**
 ```bash
 # Clone and setup
-git clone https://github.com/owenloh/enhanced-segy-parser
-cd enhanced-segy-parser
+git clone https://github.com/owenloh/Agentic-AI-SEGY-Metadata-Parser
+cd Agentic-AI-SEGY-Metadata-Parser
 pip install -r requirements.txt
 
 # Configure API key
@@ -379,7 +384,3 @@ Welcoming contributions from the geophysics and AI communities:
 2. **🌿 Create** a feature branch
 3. **✅ Add** tests for new functionality
 4. **📝 Submit** a pull request
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
